@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Calculator India</title>
+    <meta name="description" content="Calculate the GST for your products and services easily using this tool. Includes reverse GST calculator, import duty calculator, and more.">
+    <meta name="keywords" content="gst calculator india, gst calculation example, reverse gst calculator india, import duty calculator india after gst, uber gst calculator india, 18 gst calculator india, india gst calculator mod apk, india gst calculator app, gst tax calculator india, gst amount calculator india, gst bill calculator india, gst calculator in excel formula, gst calculation in india with example, gst price calculator india, gst calculator india net, gst calculator easy calculation, gst calculator for cars in india, gst calculator for home purchase india, gold jewellery gst calculator india, lic gst calculator india, gst minus calculator india, gst interest calculator online india, online gst payment calculator india, gst percentage calculator india, pre gst calculator india, gold gst tax calculator india">
+    <meta name="author" content="Your Name">
+    <meta property="og:title" content="GST Calculator India">
+    <meta property="og:description" content="Calculate the GST for your products and services easily using this tool. Includes reverse GST calculator, import duty calculator, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gstcalculatorindia.com">
+    <meta property="og:image" content="https://gstcalculatorindia.com/static/og-image.png">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId);
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText.innerText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+            alert("Copied: " + copyText.innerText);
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    <header class="w-full bg-indigo-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">GST Calculator India</h1>
+            <nav>
+                <a href="/" class="mx-2 hover:underline">Home</a>
+                <a href="/about" class="mx-2 hover:underline">About</a>
+                <a href="/contact" class="mx-2 hover:underline">Contact</a>
+                <a href="/help" class="mx-2 hover:underline">Help</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg my-8">
+        <h2 class="text-xl font-bold text-center mb-6">Calculate Your GST</h2>
+        <form method="POST" class="space-y-4">
+            <div>
+                <label for="amount" class="block text-sm font-medium text-gray-700">Enter the amount:</label>
+                <input type="number" id="amount" name="amount" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="gst_rate" class="block text-sm font-medium text-gray-700">Select GST rate (%):</label>
+                <select id="gst_rate" name="gst_rate" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="5">5%</option>
+                    <option value="12">12%</option>
+                    <option value="18">18%</option>
+                    <option value="28">28%</option>
+                </select>
+            </div>
+            <div>
+                <label for="gst_inclusive" class="block text-sm font-medium text-gray-700">GST Type:</label>
+                <select id="gst_inclusive" name="gst_inclusive" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="exclusive">Exclusive</option>
+                    <option value="inclusive">Inclusive</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Calculate</button>
+            </div>
+            {% if error %}
+            <p class="text-red-500">{{ error }}</p>
+            {% endif %}
+        </form>
+        {% if base_amount is not none %}
+        <div class="mt-6 space-y-4">
+            <div class="p-4 bg-green-100 rounded-md shadow-md">
+                <p class="text-lg font-medium">Base Amount (excluding GST): ₹<span id="base_amount">{{ base_amount }}</span></p>
+                <button onclick="copyToClipboard('base_amount')" class="mt-2 bg-green-500 text-white py-1 px-3 rounded-md hover:bg-green-600 focus:outline-none">Copy Base Amount</button>
+            </div>
+            <div class="p-4 bg-yellow-100 rounded-md shadow-md">
+                <p class="text-lg font-medium">GST Amount: ₹<span id="gst_amount">{{ gst_amount }}</span></p>
+                <button onclick="copyToClipboard('gst_amount')" class="mt-2 bg-yellow-500 text-white py-1 px-3 rounded-md hover:bg-yellow-600 focus:outline-none">Copy GST Amount</button>
+            </div>
+            <div class="p-4 bg-blue-100 rounded-md shadow-md">
+                <p class="text-lg font-medium">Total Amount (including GST): ₹<span id="total_amount">{{ total_amount }}</span></p>
+                <button onclick="copyToClipboard('total_amount')" class="mt-2 bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 focus:outline-none">Copy Total Amount</button>
+            </div>
+        </div>
+        {% endif %}
+    </main>
+    <section id="about" class="container max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg my-8">
+        <h2 class="text-xl font-bold mb-4">What is GST?</h2>
+        <p class="mb-4">GST (Goods and Services Tax) is an indirect tax that has replaced many indirect taxes in India. The GST Act was passed in Parliament on 29th March 2017 and came into effect on 1st July 2017. GST is a comprehensive, multi-stage, destination-based tax that is levied on every value addition.</p>
+        <h2 class="text-xl font-bold mb-4">How is GST Calculated?</h2>
+        <p class="mb-4">GST can be calculated using the following formula:</p>
+        <p class="mb-4"><strong>For exclusive GST:</strong></p>
+        <p class="mb-4"><code>GST Amount = (Original Cost * GST Rate) / 100</code></p>
+        <p class="mb-4"><code>Total Amount = Original Cost + GST Amount</code></p>
+        <p class="mb-4"><strong>For inclusive GST:</strong></p>
+        <p class="mb-4"><code>GST Amount = Original Cost - (Original Cost / (1 + GST Rate/100))</code></p>
+        <p class="mb-4"><code>Base Amount = Original Cost - GST Amount</code></p>
+        <h2 class="text-xl font-bold mb-4">Examples of GST Calculation</h2>
+        <p class="mb-4"><strong>Example 1 (Exclusive GST):</strong></p>
+        <p class="mb-4">If the original cost of a product is ₹1000 and the GST rate is 18%, then the GST amount will be ₹180 and the total amount will be ₹1180.</p>
+        <p class="mb-4"><strong>Example 2 (Inclusive GST):</strong></p>
+        <p class="mb-4">If the total cost of a product is ₹1180 and the GST rate is 18%, then the GST amount included is ₹180 and the base amount will be ₹1000.</p>
+    </section>
+</body>
+</html>

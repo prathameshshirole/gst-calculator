@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GST Calculator India</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .header {
+            padding: 0.5rem 0; /* Reduce padding to minimize white space */
+        }
+        .content {
+            flex: 1 0 auto; /* Ensure content takes remaining space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <header class="w-full bg-indigo-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">GST Calculator India</h1>
+            <nav>
+                <a href="/" class="mx-2 hover:underline">Home</a>
+                <a href="/about" class="mx-2 hover:underline">About</a>
+                <a href="/contact" class="mx-2 hover:underline">Contact</a>
+                <a href="/help" class="mx-2 hover:underline">Help</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg my-8 content">
+        <h2 class="text-2xl font-bold text-center mb-6">About Us</h2>
+        <p class="mb-4">Welcome to the GST Calculator India. Our mission is to provide an easy-to-use GST calculation tool for individuals and businesses across India. Whether you're a small business owner, a freelancer, or just someone trying to understand your GST obligations, our tool is designed to help you calculate GST amounts quickly and accurately.</p>
+        <h3 class="text-xl font-bold mb-4">What is GST?</h3>
+        <p class="mb-4">Goods and Services Tax (GST) is a comprehensive, multi-stage, destination-based tax that is levied on every value addition. It has replaced many indirect taxes that previously existed in India. GST aims to simplify the taxation process, making it easier for businesses to comply with tax regulations.</p>
+        <h3 class="text-xl font-bold mb-4">Features of Our GST Calculator</h3>
+        <ul class="list-disc list-inside mb-4">
+            <li>Calculate GST for both inclusive and exclusive prices.</li>
+            <li>Select from multiple GST rates (5%, 12%, 18%, and 28%).</li>
+            <li>Easy-to-use interface with clear results.</li>
+            <li>Option to copy calculated amounts for quick use.</li>
+            <li>Supports both mobile and desktop users with a responsive design.</li>
+        </ul>
+        <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+        <p class="mb-4">If you have any questions or feedback, please feel free to reach out to us at <a href="mailto:info@gstcalculatorindia.com" class="text-indigo-600 hover:underline">info@gstcalculatorindia.com</a>. We are here to help you with any queries or issues you might have.</p>
+    </main>
+</body>
+</html>
