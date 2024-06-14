@@ -35,3 +35,4 @@ Welcome to the GST Calculator India project. This project provides an easy-to-us
    ```bash
    git clone https://github.com/prathameshshirole/gst-calculator.git
    cd gst-calculator
+# gst-calculator-india
