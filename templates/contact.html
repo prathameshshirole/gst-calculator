@@ -6,42 +6,41 @@
     <title>Contact Us - GST Calculator India</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-        }
-        .header {
-            padding: 0.5rem 0; /* Reduce padding to minimize white space */
-        }
-        .content {
-            flex: 1 0 auto; /* Ensure content takes remaining space */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
     <header class="w-full bg-indigo-600 text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
             <h1 class="text-2xl font-bold">GST Calculator India</h1>
-            <nav>
-                <a href="/" class="mx-2 hover:underline">Home</a>
-                <a href="/about" class="mx-2 hover:underline">About</a>
-                <a href="/contact" class="mx-2 hover:underline">Contact</a>
-                <a href="/help" class="mx-2 hover:underline">Help</a>
+            <nav class="w-full sm:w-auto">
+                <ul class="flex flex-col sm:flex-row sm:space-x-4 mt-4 sm:mt-0">
+                    <li><a href="/" class="mx-2 hover:underline">Home</a></li>
+                    <li><a href="/about" class="mx-2 hover:underline">About</a></li>
+                    <li><a href="/contact" class="mx-2 hover:underline">Contact</a></li>
+                    <li><a href="/help" class="mx-2 hover:underline">Help</a></li>
+                </ul>
             </nav>
         </div>
     </header>
-    <main class="container max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg my-8 content">
-        <h2 class="text-2xl font-bold text-center mb-6">Contact Us</h2>
-        <p class="mb-4">If you have any questions or feedback, feel free to reach out to us. We are here to help you with any queries or issues you might have.</p>
-        <h3 class="text-xl font-bold mb-4">Email</h3>
-        <p class="mb-4">You can contact us via email at <a href="mailto:info@gstcalculatorindia.com" class="text-indigo-600 hover:underline">info@gstcalculatorindia.com</a>.</p>
+    <main class="container max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg my-8">
+        <h2 class="text-xl font-bold text-center mb-6">Contact Us</h2>
+        <p class="mb-4">If you have any questions or feedback, please feel free to reach out to us using the form below or via email at <a href="mailto:info@gstcalculatorindia.com" class="text-indigo-600 hover:underline">info@gstcalculatorindia.com</a>.</p>
+        <form method="POST" class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Your Name:</label>
+                <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Your Email:</label>
+                <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Your Message:</label>
+                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Send Message</button>
+            </div>
+        </form>
     </main>
 </body>
 </html>

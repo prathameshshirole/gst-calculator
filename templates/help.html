@@ -6,51 +6,31 @@
     <title>Help - GST Calculator India</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-        }
-        .header {
-            padding: 0.5rem 0; /* Reduce padding to minimize white space */
-        }
-        .content {
-            flex: 1 0 auto; /* Ensure content takes remaining space */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
     <header class="w-full bg-indigo-600 text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
             <h1 class="text-2xl font-bold">GST Calculator India</h1>
-            <nav>
-                <a href="/" class="mx-2 hover:underline">Home</a>
-                <a href="/about" class="mx-2 hover:underline">About</a>
-                <a href="/contact" class="mx-2 hover:underline">Contact</a>
-                <a href="/help" class="mx-2 hover:underline">Help</a>
+            <nav class="w-full sm:w-auto">
+                <ul class="flex flex-col sm:flex-row sm:space-x-4 mt-4 sm:mt-0">
+                    <li><a href="/" class="mx-2 hover:underline">Home</a></li>
+                    <li><a href="/about" class="mx-2 hover:underline">About</a></li>
+                    <li><a href="/contact" class="mx-2 hover:underline">Contact</a></li>
+                    <li><a href="/help" class="mx-2 hover:underline">Help</a></li>
+                </ul>
             </nav>
         </div>
     </header>
-    <main class="container max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg my-8 content">
-        <h2 class="text-2xl font-bold text-center mb-6">Help</h2>
-        <p class="mb-4">If you need assistance using our GST calculator tool, please refer to the following instructions:</p>
-        <h3 class="text-xl font-bold mb-4">How to Use the GST Calculator</h3>
-        <ol class="list-decimal list-inside mb-4">
-            <li>Enter the amount in the input field.</li>
-            <li>Select the appropriate GST rate from the dropdown menu.</li>
-            <li>Choose whether the GST is inclusive or exclusive of the amount entered.</li>
-            <li>Click the "Calculate" button to see the GST amount and the total amount.</li>
-        </ol>
-        <h3 class="text-xl font-bold mb-4">Frequently Asked Questions</h3>
-        <p class="mb-4"><strong>Q: What is GST?</strong><br>A: GST stands for Goods and Services Tax, which is a comprehensive, multi-stage, destination-based tax that is levied on every value addition.</p>
-        <p class="mb-4"><strong>Q: How do I know which GST rate to apply?</strong><br>A: The GST rate depends on the type of goods or services. Common rates are 5%, 12%, 18%, and 28%. You can refer to the GST rate schedule for detailed information.</p>
-        <p class="mb-4"><strong>Q: Can I use this calculator for both inclusive and exclusive GST?</strong><br>A: Yes, our calculator supports both inclusive and exclusive GST calculations. Simply choose the appropriate option when entering your amount.</p>
+    <main class="container max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg my-8">
+        <h2 class="text-xl font-bold text-center mb-6">Help</h2>
+        <p class="mb-4">Welcome to the help page of GST Calculator India. Here you'll find answers to the most common questions about using our tool.</p>
+        <h3 class="text-lg font-bold mb-2">How to Calculate GST?</h3>
+        <p class="mb-4">To calculate GST, simply enter the amount, select the GST rate, and choose whether the amount is inclusive or exclusive of GST. Then click the 'Calculate' button to see the GST amount and the total amount including GST.</p>
+        <h3 class="text-lg font-bold mb-2">Understanding GST Types</h3>
+        <p class="mb-4"><strong>Exclusive GST:</strong> The GST amount is added to the original cost.</p>
+        <p class="mb-4"><strong>Inclusive GST:</strong> The GST amount is included in the total cost.</p>
+        <h3 class="text-lg font-bold mb-2">Contact Support</h3>
+        <p class="mb-4">If you need further assistance, please contact us at <a href="mailto:info@gstcalculatorindia.com" class="text-indigo-600 hover:underline">info@gstcalculatorindia.com</a>.</p>
     </main>
 </body>
 </html>
