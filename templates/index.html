@@ -26,18 +26,35 @@
             alert("Copied: " + copyText.innerText);
         }
     </script>
+    <style>
+        @media (max-width: 640px) {
+            .header-nav {
+                display: none;
+            }
+            .header-toggle {
+                display: block;
+            }
+        }
+        @media (min-width: 641px) {
+            .header-toggle {
+                display: none;
+            }
+            .header-nav {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
     <header class="w-full bg-indigo-600 text-white py-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center flex-wrap">
             <h1 class="text-2xl font-bold">GST Calculator India</h1>
-            <nav class="w-full sm:w-auto mt-4 sm:mt-0">
-                <ul class="flex flex-col sm:flex-row sm:space-x-4">
-                    <li><a href="/" class="mx-2 hover:underline">Home</a></li>
-                    <li><a href="/about" class="mx-2 hover:underline">About</a></li>
-                    <li><a href="/contact" class="mx-2 hover:underline">Contact</a></li>
-                    <li><a href="/help" class="mx-2 hover:underline">Help</a></li>
-                </ul>
+            <button id="menu-toggle" class="header-toggle text-xl sm:hidden">&#9776;</button>
+            <nav id="menu" class="header-nav flex-col sm:flex-row sm:space-x-4 mt-4 sm:mt-0 sm:flex">
+                <a href="/" class="mx-2 hover:underline">Home</a>
+                <a href="/about" class="mx-2 hover:underline">About</a>
+                <a href="/contact" class="mx-2 hover:underline">Contact</a>
+                <a href="/help" class="mx-2 hover:underline">Help</a>
             </nav>
         </div>
     </header>
@@ -105,5 +122,15 @@
         <p class="mb-4"><strong>Example 2 (Inclusive GST):</strong></p>
         <p class="mb-4">If the total cost of a product is ₹1180 and the GST rate is 18%, then the GST amount included is ₹180 and the base amount will be ₹1000.</p>
     </section>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var menu = document.getElementById('menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
