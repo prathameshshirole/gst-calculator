@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /static/
+Disallow: /templates/
+
+Sitemap: https://gstcalculatorindia.com/sitemap.xml

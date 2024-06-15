@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, make_response, Response
 import datetime
 import os
 
+
 app = Flask(__name__)
 
 def calculate_gst_exclusive(amount, gst_rate):
@@ -73,6 +74,10 @@ def sitemap():
     sitemap_xml = render_template('sitemap_template.xml', pages=pages)
     response = Response(sitemap_xml, mimetype='application/xml')
     return response
+
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory(app.static_folder, 'robots.txt')
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
