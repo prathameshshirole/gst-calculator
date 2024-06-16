@@ -14,6 +14,20 @@
     <meta property="og:image" content="https://gstcalculatorindia.com/static/og-image.png">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://gstcalculatorindia.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://gstcalculatorindia.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+        </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5230P6VCR7"></script>
     <script>
@@ -35,41 +49,69 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('menu-toggle').addEventListener('click', function() {
-                var menu = document.getElementById('menu');
-                menu.classList.toggle('hidden');
+            var menuToggle = document.getElementById('menu-toggle');
+            var menu = document.getElementById('menu');
+
+            menuToggle.addEventListener('click', function() {
+                var isHidden = menu.classList.toggle('hidden');
+                menuToggle.setAttribute('aria-expanded', !isHidden);
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 641) {
+                    menu.classList.remove('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                } else {
+                    menu.classList.add('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
             });
         });
     </script>
     <style>
-        @media (max-width: 640px) {
-            .header-nav {
-                display: none;
-            }
-            .header-toggle {
-                display: block;
-            }
+        body {
+            padding-top: 64px; /* height of the header */
+        }
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            padding-left: 16px; /* Add padding to the left */
+        padding-right: 16px; /* Add padding to the right */
+        }
+        .header-nav {
+            display: none;
+            flex-direction: column;
+        }
+        .header-nav.hidden {
+            display: flex;
+        }
+        .header-toggle {
+            display: block;
         }
         @media (min-width: 641px) {
             .header-toggle {
                 display: none;
             }
             .header-nav {
-                display: flex;
+                display: flex !important;
+                flex-direction: row;
             }
         }
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
-    <header class="w-full bg-indigo-600 text-white py-4 shadow-lg">
+    <header class="sticky-header w-full bg-indigo-600 text-white py-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center flex-wrap">
             <h1 class="text-3xl font-extrabold tracking-wide">GST Calculator India</h1>
-            <button id="menu-toggle" class="header-toggle text-2xl sm:hidden">&#9776;</button>
+            <button id="menu-toggle" class="header-toggle text-2xl sm:hidden" aria-controls="menu" aria-expanded="false">&#9776;</button>
             <nav id="menu" class="header-nav flex-col sm:flex-row sm:space-x-4 mt-4 sm:mt-0 sm:flex hidden">
                 <a href="/" class="mx-2 hover:underline">Home</a>
                 <a href="/about" class="mx-2 hover:underline">About</a>
                 <a href="/contact" class="mx-2 hover:underline">Contact</a>
                 <a href="/help" class="mx-2 hover:underline">Help</a>
+                <a href="/disclaimer" class="mx-2 hover:underline">Disclaimer</a>
             </nav>
         </div>
     </header>
@@ -137,15 +179,5 @@
         <p class="mb-4"><strong>Example 2 (Inclusive GST):</strong></p>
         <p class="mb-4">If the total cost of a product is ₹1180 and the GST rate is 18%, then the GST amount included is ₹180 and the base amount will be ₹1000.</p>
     </section>
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            var menu = document.getElementById('menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        });
-    </script>
 </body>
 </html>

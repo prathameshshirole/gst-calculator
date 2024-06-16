@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - GST Calculator India</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            padding-top: 64px; /* height of the header */
+        }
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            padding-left: 16px; /* Add padding to the left */
+        padding-right: 16px; /* Add padding to the right */
+        }
+        @media (max-width: 640px) {
+            .header-nav {
+                display: none;
+                flex-direction: column;
+            }
+            .header-nav.hidden {
+                display: flex;
+            }
+            .header-toggle {
+                display: block;
+            }
+        }
+        @media (min-width: 641px) {
+            .header-toggle {
+                display: none;
+            }
+            .header-nav {
+                display: flex;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('menu-toggle').addEventListener('click', function() {
+                var menu = document.getElementById('menu');
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+    {% include 'header.html' %}
+    <main class="container max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg my-8">
+        <h2 class="text-2xl font-bold text-center mb-6">Privacy Policy</h2>
+        <p class="mb-4">
+            The information provided by GST Calculator India ("we," "us" or "our") on gstcalculatorindia.com (the "Site") is for general informational purposes only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the Site.
+        </p>
+        <p class="mb-4">
+            Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.
+        </p>
+        <h3 class="text-xl font-semibold mb-4">External Links Disclaimer</h3>
+        <p class="mb-4">
+            The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties or links to websites and features. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability or completeness by us.
+        </p>
+        <p class="mb-4">
+            We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites linked through the site or any website or feature linked in any banner or other advertising. We will not be a party to or in any way be responsible for monitoring any transaction between you and third-party providers of products or services.
+        </p>
+        <h3 class="text-xl font-semibold mb-4">Professional Disclaimer</h3>
+        <p class="mb-4">
+            The Site cannot and does not contain financial advice. The financial information is provided for general informational and educational purposes only and is not a substitute for professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals. We do not provide any kind of financial advice.
+        </p>
+        <p class="mb-4">
+            The use or reliance of any information contained on this site is solely at your own risk.
+        </p>
+        <h3 class="text-xl font-semibold mb-4">Affiliates Disclaimer</h3>
+        <p class="mb-4">
+            The Site may contain links to affiliate websites, and we receive an affiliate commission for any purchases made by you on the affiliate website using such links. Our affiliates include the following:
+        </p>
+    
+        <p class="mb-4">
+            We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn advertising fees by linking to Amazon.com and affiliated websites.
+        </p>
+    </main>
+</body>
+</html>

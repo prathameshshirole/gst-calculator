@@ -1,9 +1,19 @@
-from flask import Flask, render_template, request, make_response, Response, send_from_directory
+from flask import Flask, render_template, request, make_response, Response, send_from_directory, flash, redirect, url_for
 import datetime
 import os
-
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
+# Configure Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'your_email@gmail.com'
+app.config['MAIL_PASSWORD'] = 'your_email_password'
+
+mail = Mail(app)
 
 def calculate_gst_exclusive(amount, gst_rate):
     gst_amount = round((amount * gst_rate) / 100, 2)
@@ -54,13 +64,31 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+
+        msg = Message('New Contact Form Submission',
+                      sender='your_email@gmail.com',
+                      recipients=['your_email@gmail.com'])
+        msg.body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
+        mail.send(msg)
+        flash('Your message has been sent successfully!', 'success')
+        return redirect(url_for('contact'))
+
     return render_template('contact.html')
 
 @app.route('/help')
 def help():
     return render_template('help.html')
+
+@app.route('/disclaimer')
+def disclaimer():
+    return render_template('disclaimer.html')
+
 
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
@@ -80,7 +108,5 @@ def robots_txt():
     return send_from_directory(app.static_folder, 'robots.txt')
 
 if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
-
